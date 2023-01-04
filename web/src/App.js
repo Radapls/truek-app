@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+// Components
+// Funcion que retorna un HATML simple, tambien puede retornar Css o JS
+
+// Props
+// Atributos, por ejemplo un titulo, se puedne interpolar variabeles, etc
+
+// State
+// Información que el componente va a manipular. Informaciones mantenidas por el componente //TODO(Concepto: Inmutabilidad)
+
+import { useState } from "react";
+import Header from "./Header";
 
 function App() {
+
+  let [counter, setCounter] = useState(0)
+
+  function incrementCounter(){
+    setCounter( counter + 1)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <h1> Contador: {counter}</h1>
+    <button onClick={incrementCounter}>Incrementar</button>
+
+    <Header title="das"/>
+    </>
   );
 }
 
