@@ -7,85 +7,49 @@
 // State
 // Información que el componente va a manipular. Informaciones mantenidas por el componente //TODO(Concepto: Inmutabilidad)
 
+import React, { useEffect, useState } from 'react';
+import api from './services/api';
 
 import './App.css';
 import './global.css';
 import './Main.css';
 import './Sidebar.css';
 
+import DevForm from './components/DevForm';
+import DevItem from './components/DevItem';
+
 function App() {
+    const [devs, setDevs]= useState([]);
+
+    useEffect(() => {
+        async function loadDevs() {
+            const response = await api.get('/users')
+
+            setDevs(response.data)
+        }
+
+        loadDevs();
+    }, [])
+
+    async function handleAddDev(data){
+
+        const response = await api.post('/users', data)
+
+            setDevs([...devs, response.data])
+    }
+
   return (
     <div id="app">
       <aside>
-      <strong>
-      <form>
-
-        <div class="input-block">
-          <label htmlFor=''>Usuario de Github</label>
-          <input name='github_username' id='username_github'/>
-        </div>
-
-        <div class="input-block">
-          <label htmlFor=''>Tecnologias</label>
-          <input name='techs' id='techs'/>
-        </div>
-
-        <div class="input-group">
-          <div class="input-block">
-            <label htmlFor=''>Latitud</label>
-            <input name='latitude' id='latitude'/>
-          </div>
-
-          <div class="input-block">
-            <label htmlFor=''>Longitud</label>
-            <input name='longitude' id='longitude'/>
-          </div>
-
-        </div>
-
-        <button type='submit'>Enviar</button>
-
-      </form>
-      </strong>
+      <strong> Registrar</strong>
+        <DevForm onSubmit={handleAddDev}/>
       </aside>
 
       <main>
         <ul>
-          <li className='dev-item'>
-            <header>
-              <img src="https://avatars.githubusercontent.com/u/63562282?v=4"  alt="_blank"/>
-              <div class="user-info">
-                <strong> Juan Felipe Rada</strong>
-                <span>Angular, TypeScript</span>
-              </div>
-            </header>
-            <p>Politólogo* Aprendiendo a programar una linea a la vez</p>
-            <a href="https://github.com/Radapls">Acceder al perfil de github</a>
-          </li>
-
-          <li className='dev-item'>
-            <header>
-              <img src="https://avatars.githubusercontent.com/u/63562282?v=4" alt="_blank"/>
-              <div class="user-info">
-                <strong> Juan Felipe Rada</strong>
-                <span>Angular, TypeScript</span>
-              </div>
-            </header>
-            <p>Politólogo* Aprendiendo a programar una linea a la vez</p>
-            <a href="https://github.com/Radapls">Acceder al perfil de github</a>
-          </li>
-
-          <li className='dev-item'>
-            <header>
-              <img src="https://avatars.githubusercontent.com/u/63562282?v=4" alt="_blank"/>
-              <div class="user-info">
-                <strong> Juan Felipe Rada</strong>
-                <span>Angular, TypeScript</span>
-              </div>
-            </header>
-            <p>Politólogo* Aprendiendo a programar una linea a la vez</p>
-            <a href="https://github.com/Radapls">Acceder al perfil de github</a>
-          </li>
+            {devs.map(dev => (
+                <DevItem key={dev._id} dev={dev}/>
+            ))}
         </ul>
       </main>
     </div>

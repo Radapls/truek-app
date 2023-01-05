@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes');
+const cors = require('cors');
 
 
 const app = express();
@@ -9,8 +10,9 @@ mongoose.set("strictQuery", true);
 
 mongoose.connect('mongodb+srv://example:example@cluster0.esijuul.mongodb.net/?retryWrites=true&w=majority')
 
-app.use(express.json())
-app.use(routes)
+app.use(cors());
+app.use(express.json());
+app.use(routes);
 
 app.listen(8888);
 
