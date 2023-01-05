@@ -1,3 +1,16 @@
+/**
+ * RADAPLS PROJECTS
+ * ------------------
+ * Copyright (C) 2023 Juan Felipe Rada - All Rights Reserved.
+ *
+ * This file, project or its parts can not be copied and/or distributed without
+ * the express permission of Juan Felipe Rada.
+ *
+ * @file UserController.js
+ * @author Juan Felipe Rada <radapls8@gmail.com>
+ * @date Wednesday, 4th January 2023
+ */
+
 const axios = require('axios');
 const User = require('../models/user');
 const parseStringAsArray = require('../utils/parsestringAsArray')
@@ -19,16 +32,16 @@ module.exports = {
 
         if (!user) {
             const apiResponse = await axios.get(`https://api.github.com/users/${github_username}`);
-    
+
             const { name = login, avatar_url, bio} = apiResponse.data
-        
+
             const techsArray = parseStringAsArray(techs);
-        
+
             const location = {
                 type: 'Point',
                 coordinates: [longitude, latitude ]
             };
-        
+
             user = await User.create({
                 github_username,
                 name,
@@ -38,7 +51,7 @@ module.exports = {
                 location,
             })
         }
-    
+
         return response.json(user);
     }
 }
