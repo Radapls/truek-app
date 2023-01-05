@@ -17,6 +17,7 @@ import './Sidebar.css';
 
 import DevForm from './components/DevForm';
 import DevItem from './components/DevItem';
+import Header from './components/Header';
 
 function App() {
     const [devs, setDevs]= useState([]);
@@ -39,20 +40,25 @@ function App() {
     }
 
   return (
-    <div id="app">
-      <aside>
-      <strong> Registrar</strong>
-        <DevForm onSubmit={handleAddDev}/>
-      </aside>
 
-      <main>
-        <ul>
-            {devs.map(dev => (
-                <DevItem key={dev._id} dev={dev}/>
-            ))}
-        </ul>
-      </main>
-    </div>
+    <>
+        <Header/>
+
+        <div id="app">
+              <aside>
+                  <strong> Registrar</strong>
+                  <DevForm onSubmit={handleAddDev} />
+              </aside>
+
+              <main>
+                  <ul>
+                      {devs.map(dev => (
+                          <DevItem key={dev._id} dev={dev} />
+                      ))}
+                  </ul>
+              </main>
+        </div>
+    </>
   );
 }
 
