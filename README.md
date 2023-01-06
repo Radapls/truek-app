@@ -23,6 +23,7 @@
 
 <p align="center">
   <img alt="Frontend" src="assets/mockup.png" width="100%">
+  <img alt="Test" src="assets/truek.gif" width="100%">
 </p>
 
 ## :rocket: Technologies
