@@ -1,12 +1,12 @@
 <h1 align="center">
-    <img alt="Truek App" title="#delicinha" src="assets/logo.svg" width="250px" />
+    <img alt="Truek App" src="assets/logo.svg" width="250px" />
 </h1>
 
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/radapls/truek-app">
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/radapls/truek-app">
-  
+
   <a href="https://github.com/Rocketseat/semana-omnistack-10/commits/master">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/radapls/truek-app">
   </a>
@@ -14,9 +14,11 @@
   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
 </p>
 
+This project was based on the [Omnistack 10 week](https://github.com/rocketseat-education/semana-omnistack-10) by [Rocketseat](https://www.rocketseat.com.br/). Check the links for more details.
+
 <p align="center">
-  <a href="#rocket-tecnologias">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-projeto">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-project">Project</a>&nbsp;&nbsp;&nbsp;
 </p>
 
 <br>
@@ -34,7 +36,7 @@ This project was developed with:
 - [React Native](https://facebook.github.io/react-native/)
 - [Expo](https://expo.io/)
 
-## 
+##
 💻
  Project
 
