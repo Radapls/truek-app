@@ -12,7 +12,7 @@
  */
 
 const User = require('../models/user')
-const parseStringAsArray = require('../utils/parsestringAsArray')
+const parseStringAsArray = require('../utils/parseStringAsArray')
 
 
 module.exports = {

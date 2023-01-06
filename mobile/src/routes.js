@@ -11,9 +11,9 @@
  * @date Thursday, 5th January 2023
  */
 
-import { Image } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import ImageHeader from './pages/ImageHeader';
 
 import Main from './pages/Main';
 import Profile from './pages/Profile';
@@ -23,8 +23,8 @@ const Routes = createAppContainer(
         Main: {
             screen: Main,
             navigationOptions: {
-                title: <Image style={{ width: 100, height:40, resizeMode:'cover' }} source={require('../assets/logo.png')}/>,
-                headerTitleAlign: 'center'
+                headerTitleAlign: 'center',
+                headerTitle:  () => <ImageHeader/>,
             },
         },
         Profile: {
@@ -40,10 +40,10 @@ const Routes = createAppContainer(
             headerBackTitleVisible: false,
             headerStyle: {
                 backgroundColor: '#FCAB10',
+                height: 80
             }
         }
-     }
-    )
+     })
 );
 
 export default Routes

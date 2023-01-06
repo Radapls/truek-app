@@ -13,12 +13,11 @@
 
 const axios = require('axios');
 const User = require('../models/user');
-const parseStringAsArray = require('../utils/parsestringAsArray')
+const parseStringAsArray = require('../utils/parseStringAsArray')
 
 // index, show, store, update, destroy
 
 module.exports = {
-
     async index(request, response) {
          const users  = await User.find();
 
@@ -50,6 +49,7 @@ module.exports = {
                 techs: techsArray,
                 location,
             })
+
         }
 
         return response.json(user);
