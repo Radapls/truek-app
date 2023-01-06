@@ -14,11 +14,9 @@
   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
 </p>
 
-This project was based on the [Omnistack 10 week](https://github.com/rocketseat-education/semana-omnistack-10) by [Rocketseat](https://www.rocketseat.com.br/). Check the links for more details.
-
-<p align="center">
-  <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-project">Project</a>&nbsp;&nbsp;&nbsp;
+<p align="center"> This project was based on the
+  <a href="https://github.com/rocketseat-education/semana-omnistack-10">Omnistack 10 week</a> by <a href="https://www.rocketseat.com.br/">Rocketseat.</a>
+    Check the links for more details.
 </p>
 
 <br>
