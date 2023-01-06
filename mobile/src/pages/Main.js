@@ -15,7 +15,9 @@ import { getCurrentPositionAsync, requestForegroundPermissionsAsync } from 'expo
 import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import MapView, { Callout, Marker } from 'react-native-maps';
+
 import api from '../services/api';
+import { connect, disconnect, subscribeToNewDevs } from '../services/socket';
 
 function Main({navigation}){
     const [users, setUsers] = useState([]);
@@ -45,6 +47,23 @@ function Main({navigation}){
         loadInitialPosition();
     }, []);
 
+    useEffect(() => {
+        subscribeToNewDevs(user => setUsers([...users, user]))
+    }, [users])
+
+    function setupWebsocket(){
+
+        disconnect();
+
+        const {latitude, longitude} = currentRegion;
+
+        connect(
+            latitude,
+            longitude,
+            techs
+            );
+        }
+
     async function loadUsers(){
         const {latitude, longitude} = currentRegion;
 
@@ -57,7 +76,7 @@ function Main({navigation}){
         })
 
         setUsers(response.data.users);
-
+        setupWebsocket();
     }
 
     function handleRegionsChanged(region){

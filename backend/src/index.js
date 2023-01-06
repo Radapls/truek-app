@@ -1,10 +1,27 @@
+/**
+ * RADAPLS PROJECTS
+ * ------------------
+ * Copyright (C) 2023 Juan Felipe Rada - All Rights Reserved.
+ *
+ * This file, project or its parts can not be copied and/or distributed without
+ * the express permission of Juan Felipe Rada.
+ *
+ * @file index.js
+ * @author Juan Felipe Rada <radapls8@gmail.com>
+ * @date Tuesday, 3rd January 2023
+ */
+
 const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes');
 const cors = require('cors');
-
+const http = require('http');
+const { setupWebsocket} = require('./websocket')
 
 const app = express();
+const server = http.Server(app);
+
+setupWebsocket(server)
 
 mongoose.set("strictQuery", true);
 
@@ -14,7 +31,7 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.listen(8888);
+server.listen(8888);
 
 
 // Http methods GET, POST, PUT, DELETE

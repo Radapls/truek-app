@@ -14,6 +14,7 @@
 const axios = require('axios');
 const User = require('../models/user');
 const parseStringAsArray = require('../utils/parseStringAsArray')
+const {findConnections, sendMessage} = require('../websocket')
 
 // index, show, store, update, destroy
 
@@ -49,6 +50,16 @@ module.exports = {
                 techs: techsArray,
                 location,
             })
+
+            // Filter the connections in a 10km radio
+            // Almost one of the techs filtered
+
+            const sendSocketMessageTo = findConnections(
+                {latitude,longitude},
+                techsArray
+                )
+
+                sendMessage(sendSocketMessageTo, 'new-user', user)
 
         }
 
